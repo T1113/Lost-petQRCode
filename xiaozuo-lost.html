@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻找丢失的小卓 - 悬赏5000元</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #f39c12;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --border-color: #eee;
+            --success-color: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .urgent-banner {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        .main-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            margin: 1.5rem;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .pet-photo {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .info-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-icon {
+            flex: 0 0 40px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-right: 1rem;
+            margin-top: 0.2rem;
+        }
+        
+        .info-content {
+            flex: 1;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: #555;
+        }
+        
+        .info-value {
+            font-size: 1.1rem;
+        }
+        
+        .reward-section {
+            background-color: #fff3cd;
+            border: 2px solid #ffeeba;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .reward-title {
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .reward-title i {
+            margin-right: 0.5rem;
+            color: #f39c12;
+        }
+        
+        .reward-amount {
+            font-size: 2rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        .contact-button {
+            display: block;
+            background-color: var(--success-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 2rem 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-button:hover {
+            background-color: #219653;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        
+        .contact-button i {
+            margin-right: 0.5rem;
+        }
+        
+        .message {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 2rem 0;
+            color: #555;
+        }
+        
+        .message strong {
+            color: var(--primary-color);
+        }
+        
+        .thank-you {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .info-icon {
+                flex: 0 0 30px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>寻找丢失的爱犬</h1>
+                <p style="font-size: 1.5rem; margin-top: 0.5rem;">小卓走丢了，请帮助我们找到它！</p>
+            </div>
+        </div>
+        
+        <div class="urgent-banner">
+            <i class="fas fa-exclamation-triangle"></i> 紧急寻找丢失宠物 <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        
+        <div class="main-content">
+            <div class="message">
+                <p>我的爱犬<strong>小卓</strong>不幸走丢了，它对我非常重要！<br>如果您看到它或有任何线索，请立即与我联系！</p>
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1583512603806-077998240c7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="类似小卓的狗狗" class="pet-photo">
+            
+            <h2><i class="fas fa-paw"></i> 宠物信息</h2>
+            <div class="info-card">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">宠物名字</div>
+                        <div class="info-value">小卓</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-dog"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">品种</div>
+                        <div class="info-value">泰迪和比熊混血</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">颜色</div>
+                        <div class="info-value">黄色</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">体重</div>
+                        <div class="info-value">12-15斤</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">丢失地点</div>
+                        <div class="info-value">深圳市</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reward-section">
+                <div class="reward-title">
+                    <i class="fas fa-gift"></i> 寻宠有酬
+                </div>
+                <p>如果您能帮助我找回小卓，我将提供现金酬谢</p>
+                <div class="reward-amount">¥ 5,000</div>
+                <p>当面交付，无需担心</p>
+            </div>
+            
+            <h2><i class="fas fa-user"></i> 联系信息</h2>
+            <div class="info-card">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">联系电话</div>
+                        <div class="info-value">19866624289</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">地址</div>
+                        <div class="info-value">深圳市富达花园1D602</div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="tel:19866624289" class="contact-button">
+                <i class="fas fa-phone-alt"></i> 立即联系我
+            </a>
+            
+            <div class="thank-you">
+                <i class="fas fa-heart" style="color: #e74c3c;"></i> 感谢您的善心和帮助！每一个爱心举动都可能让我们重聚。
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>如果您有任何线索，请不要犹豫，立即联系我。小卓正在等待回家！</p>
+        </div>
+    </div>
+</body>
+</html> 
